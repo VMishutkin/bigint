@@ -29,38 +29,32 @@ int main( int argc, char *argv[] )
     
     string firstNumber = tmp.readNumberFromFile( firstFile.c_str(), flag );
     string secondNumber = tmp.readNumberFromFile( secondFile.c_str(), flag );
-
+	BigInt res;
     try
     {
         switch ( operation )
         {
             case '+' : {
-                    BigInt res = BigInt( firstNumber ) + BigInt( secondNumber );
-                    tmp.writeNumberToFilE(resultFile.c_str(), res, flag);
+                    res = BigInt( firstNumber ) + BigInt( secondNumber );
                 } break;
             case '-' : {
-                    BigInt res = BigInt( firstNumber ) - BigInt( secondNumber );
-                    tmp.writeNumberToFilE(resultFile.c_str(), res, flag);
+                    res = BigInt( firstNumber ) - BigInt( secondNumber );
                 } break;
             case 'x' : {
-                    BigInt res = BigInt( firstNumber ) * BigInt( secondNumber );
-                    tmp.writeNumberToFilE(resultFile.c_str(), res, flag);
+                    res = BigInt( firstNumber ) * BigInt( secondNumber );
                 } break;
             case '/' : {
                     if ( BigInt( secondNumber ) == 0 )
                         throw out_of_range( "Division by zero" );
-                    BigInt res = BigInt( firstNumber ) / BigInt( secondNumber );
-                    tmp.writeNumberToFilE(resultFile.c_str(), res, flag);
+                    res = BigInt( firstNumber ) / BigInt( secondNumber );
                 } break;
             case '%' : {
-                    BigInt res = BigInt( firstNumber ) % BigInt( secondNumber );
-                    tmp.writeNumberToFilE(resultFile.c_str(), res, flag);
+                    res = BigInt( firstNumber ) % BigInt( secondNumber );
                 } break;
             case '^' : {
                     if ( BigInt( secondNumber ) < 0 )
                         throw out_of_range( "a^(-b)" );
-                    BigInt res = BigInt( firstNumber ) ^ BigInt( secondNumber );
-                    tmp.writeNumberToFilE(resultFile.c_str(), res, flag);
+                    res = BigInt( firstNumber ) ^ BigInt( secondNumber );
                 } break;
         }
     }
@@ -69,6 +63,6 @@ int main( int argc, char *argv[] )
         cout << "What? " << e.what() << endl;
         usage();
     }
-
+	tmp.writeNumberToFilE(resultFile.c_str(), res, flag);
     return 0;
 }
