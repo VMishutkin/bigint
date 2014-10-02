@@ -32,7 +32,7 @@ string BigInt::readNumberFromFile(const char *fileName, char flag)
     }
 }
 
-void BigInt::writeNumberToFilE(const char *fileName, BigInt &n, char flag = 's')
+void BigInt::writeNumberToFilE(const char *fileName, BigInt &n, char flag )
 {
     string res = n.toString();
     if (flag == 's')
